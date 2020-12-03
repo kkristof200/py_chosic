@@ -9,7 +9,7 @@ else:
 
 setuptools.setup(
     name="chosic",
-    version="0.0.3",
+    version="0.0.4",
     author="Kristof",
     description="chosic",
     long_description=long_description,

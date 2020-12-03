@@ -56,8 +56,18 @@ class Chosic(Api):
                 debug=debug
             )
             soup = bs(res.content, 'lxml')
+            _titles = [e.text for e in soup.find_all('div', class_='name')]
+            titles = []
 
-            return [e.text.replace('Search Spotify', '').strip().title() for e in soup.find_all('div', class_='name')]
+            for title in _titles:
+                title = title.replace('Search Spotify', '').strip().title()
+
+                while '  ' in title:
+                    title = title.replace('  ', ' ')
+
+                titles.append(title)
+
+            return titles
         except Exception as e:
             if debug:
                 print(e)
